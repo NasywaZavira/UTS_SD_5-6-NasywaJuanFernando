@@ -5,22 +5,24 @@ using namespace std;
 
 class Graph {
 private:
-    int Numver;
-    vector<vector<int>> adjMatrix;
+    int Numver;//menyimpan vertex  
+    vector<vector<int>> adjMatrix;//menyimpan hubungan 
 
 public:
+//memanggil konstruktor graph
     Graph(int V) : Numver(V) {
-
+//resize untuk mengatur ukuran matrix
         adjMatrix.resize(Numver, vector<int>(Numver, 0));
-    }
+    }//koneksi antara dua node
     void addEdge(int i, int j) {
         if (i >= 0 && i < Numver && j >= 0 && j < Numver) {
             adjMatrix[i][j] = 1;
-            adjMatrix[j][i] = 1;
+            adjMatrix[j][i] = 1;//satu arah agar graf tidak berarah
         }
     }
-
+//fungsi untuk permulaan dan limit hari infeksi
     void pencarianinfeksi(int permulaianhari, int limithari) {
+       //menjadi penenntu pencarian hari
         vector<int> days(Numver, -1); 
         queue<int> q;
         
@@ -98,3 +100,8 @@ int main() {
     graph.pencarianinfeksi(permulaianhari, limithari);
     return 0;
 }
+//inisialisai vektor hubungan node dan queue
+//membuat hari permulaan dan hari terakhir dan juga pelacakan infeksi
+//pembuatan fungsi bfs dan queue
+//permulaian program 
+//program akan meminta node dan vertex lalu akan menentukan hari awal dan yang terinfeksi siapa
